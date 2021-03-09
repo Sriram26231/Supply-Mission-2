@@ -20,21 +20,21 @@ function setup() {
 	packageSprite.addImage(packageIMG)
 	packageSprite.scale=0.2
 
-	helicopterSprite=createSprite(20, 200, 10,10);
+	helicopterSprite=createSprite(200, 400, 10,10);
 	helicopterSprite.addImage(helicopterIMG)
 	helicopterSprite.scale=0.6;
 
 
 	groundSprite=createSprite(width/2, height-35, width,10);
 	groundSprite.shapeColor=color(255)
-	helicopterSprite.velocityX = 5;
+	
 
 
 	engine = Engine.create();
 	world = engine.world;
 
 	
-	  //packageBody = Bodies.circle(helicopterSprite.x , helicopterSprite.y , 5 , {restitution:1, isStatic:true});
+	  packageBody = Bodies.circle(200 , 400 , 5 , {restitution:1, isStatic:true});
 
 
 	//Create a Ground
@@ -50,20 +50,15 @@ function setup() {
 function draw() {
   rectMode(CENTER);
   background(0);
-  //World.add(world, packageBody);
-  //packageSprite.x= packageBody.position.x 
-  //packageSprite.y= packageBody.position.y 
+  World.add(world, packageBody);
+  packageSprite.x= packageBody.position.x 
+  packageSprite.y= packageBody.position.y 
 
 
-  
+  if(keyCode === 32){
+	  Matter.body.setStatic(packageBody, false)
+  }
 
-	if (helicopterSprite.x = 400) {
-		//Matter.Body.setStatic(packageBody, false)
-
-
-		
- 
-}
 drawSprites();
 
 }
